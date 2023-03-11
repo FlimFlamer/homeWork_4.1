@@ -5,6 +5,8 @@ import com.scypro.recipeapp.model.Ingredient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/ingridient")
 public class IngredientController {
@@ -21,7 +23,22 @@ public class IngredientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Ingredient> getById(@PathVariable long id){
+    public ResponseEntity<Ingredient> getById(@PathVariable long id) {
         return ResponseEntity.of(ingredientService.getById(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Ingredient> update(@PathVariable long id, @RequestBody Ingredient ingredient) {
+        return ResponseEntity.ok(ingredientService.update(id, ingredient));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Ingredient> delete(@PathVariable long id) {
+        return ResponseEntity.ok(ingredientService.delete(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<Map<Long, Ingredient>> getAll() {
+        return ResponseEntity.ok(ingredientService.getAll());
     }
 }

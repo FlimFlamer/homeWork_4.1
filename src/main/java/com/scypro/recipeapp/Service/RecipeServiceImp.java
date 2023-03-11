@@ -31,4 +31,22 @@ public class RecipeServiceImp implements RecipeService{
     public Optional<Recipe> getById(long id) {
         return Optional.ofNullable(recipeMap.get(id));
     }
+
+    @Override
+    public Recipe update(Long id, Recipe recipe) {
+        if (!validationService.validate(recipe)){
+            throw new ValidationExeption(recipe.toString());
+        }
+        return recipeMap.replace(id, recipe);
+    }
+
+    @Override
+    public Recipe delete(Long id) {
+        return recipeMap.remove(id);
+    }
+
+    @Override
+    public Map<Long, Recipe> getAll() {
+        return recipeMap;
+    }
 }
