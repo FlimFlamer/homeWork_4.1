@@ -1,7 +1,6 @@
 package com.scypro.recipeapp.Service;
 
 import com.scypro.recipeapp.Exeption.ValidationExeption;
-import com.scypro.recipeapp.model.Ingredient;
 import com.scypro.recipeapp.model.Recipe;
 import org.springframework.stereotype.Service;
 
