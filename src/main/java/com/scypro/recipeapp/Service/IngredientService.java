@@ -1,7 +1,9 @@
 package com.scypro.recipeapp.Service;
 
 import com.scypro.recipeapp.model.Ingredient;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
 
@@ -15,4 +17,5 @@ public interface IngredientService {
     Ingredient delete(Long id);
 
     Map<Long, Ingredient> getAll();
+    void uploadFile(MultipartFile file) throws IOException;
 }
